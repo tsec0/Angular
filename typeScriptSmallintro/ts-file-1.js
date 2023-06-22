@@ -56,6 +56,26 @@ var Person = /** @class */ (function (_super) {
     }
     return Person;
 }(Human));
+// Generics can work with string number separately
+function getIdentity(id) {
+    // 
+    console.log(id);
+}
+getIdentity("123");
+getIdentity(12);
+// enum
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus[PaymentStatus["Failed"] = 0] = "Failed";
+    PaymentStatus[PaymentStatus["Successful"] = 1] = "Successful";
+    PaymentStatus[PaymentStatus["Pending"] = 2] = "Pending";
+})(PaymentStatus || (PaymentStatus = {}));
+var x = PaymentStatus.Pending;
+//const FAILED = 'Failed'
+//if(x === FAILED){}
+if (x === PaymentStatus.Pending) {
+    console.log(x);
+}
 var personIvan = new Person("Ivan", 33);
 console.log("".concat(personIvan.age)); // cannot access name because its private
 personIvan.speak();

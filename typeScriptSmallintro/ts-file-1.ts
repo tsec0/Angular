@@ -58,6 +58,27 @@ class Person extends Human{
     }
 }
 
+// Generics can work with string number separately
+function getIdentity<T>(id: T){
+    // 
+    console.log(id);
+}
+getIdentity<string>("123");
+getIdentity<number>(12);
+
+// enum
+enum PaymentStatus {
+    Failed,
+    Successful,
+    Pending,
+}
+const x = PaymentStatus.Pending;
+//const FAILED = 'Failed'
+//if(x === FAILED){}
+if(x === PaymentStatus.Pending){
+    console.log(x);
+}
+
 const personIvan = new Person("Ivan", 33);
 console.log(`${personIvan.age}`); // cannot access name because its private
 personIvan.speak();
