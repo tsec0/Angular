@@ -1,0 +1,16 @@
+<div id="nav">
+    <!-- ngIf -> if check -->
+    <!-- <p *ngIf="toggle">{{title}} show!</p> 
+    <p *ngIf="!toggle">{{title}} hide!</p> -->
+    <!-- OR -->
+    <p *ngIf="isActive"> SHOW </p>
+    <span *ngIf="isActive">
+        <ul>
+            <li>Active</li>
+            <li>Active</li>
+            <li>Active</li>
+        </ul>
+    </span>
+    <button (click)="handleClick()">Click Me!</button>
+</div>
+<hr>
