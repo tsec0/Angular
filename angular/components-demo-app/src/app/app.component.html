@@ -1,7 +1,11 @@
 <!-- Highlight Card -->
 <div class="card highlight-card card-small">
 
-  <app-navigation />
+  <app-navigation 
+  [titleFromApp]="title" 
+  [activeUsers]="users"
+  (onTestOutput)="onOutputFromChild()"
+  />
   <span>{{ title }} app is running!</span>
   <br>
   <span>{{ hello }}</span>

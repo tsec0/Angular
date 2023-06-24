@@ -9,7 +9,20 @@ import { Component } from '@angular/core';
   //   background: red;
   // }`],
 })
+
 export class AppComponent {
   title = 'title from AppComponent';
   hello = 'Hello World';
+
+  users = [
+    { name: 'Mitko', age: 21 },
+    { name: 'Pesho', age: 22 },
+    { name: 'Mariika', age: 13 },
+    { name: 'Katya', age: 19 }
+  ];
+
+  onOutputFromChild() {
+    console.log('onOutputFromChild');
+    // console.log(event);
+  }
 }

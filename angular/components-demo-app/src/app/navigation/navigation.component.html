@@ -1,16 +1,26 @@
 <div id="nav">
-    <!-- ngIf -> if check -->
-    <!-- <p *ngIf="toggle">{{title}} show!</p> 
-    <p *ngIf="!toggle">{{title}} hide!</p> -->
-    <!-- OR -->
-    <p *ngIf="isActive"> SHOW </p>
+    <h3>{{ title }}</h3>
     <span *ngIf="isActive">
         <ul>
-            <li>Active</li>
-            <li>Active</li>
-            <li>Active</li>
+            <!-- *ngFor is for the element <li> -->
+            <li *ngFor="let user of activeUsers">
+                <span [style.color]="user.age % 2 === 0 ? 'red' : 'green'">
+                    {{ user.name + " is " + user.age + " years old !"}}>
+                </span>
+            </li>
         </ul>
     </span>
-    <button (click)="handleClick()">Click Me!</button>
+
+    <span *ngIf="!isActive">
+        <p>Nothing is Active!</p>
+        <hr>
+        <p style="text-align: center">SHOW Active</p>
+    </span>
+    <!-- [attr.data-input] -->
+    <input [value]="inputValue" type="text" />
+
+    <button (click)="handleClick($event, 1000, 1100, 1200)">
+        Make {{ isActive ? "Incative" : "Active" }}
+    </button>
 </div>
 <hr>
