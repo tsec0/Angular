@@ -76,6 +76,26 @@ var x = PaymentStatus.Pending;
 if (x === PaymentStatus.Pending) {
     console.log(x);
 }
+var UserTest = /** @class */ (function () {
+    function UserTest() {
+    }
+    return UserTest;
+}());
+// enum is based on integers starting from 0
+var PayStat;
+(function (PayStat) {
+    PayStat[PayStat["Failed"] = 0] = "Failed";
+    PayStat[PayStat["Successful"] = 1] = "Successful";
+    PayStat[PayStat["Pending"] = 2] = "Pending";
+})(PayStat || (PayStat = {}));
+// array
+var PaymentStatus3 = ["Failed", "Successful", "Pending"];
+// this is an object => key, value pairs
+var PaymentStatus2 = {
+    Failed: "Failed",
+    Successfull: "Successful",
+    Pending: "Pending",
+};
 var personIvan = new Person("Ivan", 33);
 console.log("".concat(personIvan.age)); // cannot access name because its private
 personIvan.speak();

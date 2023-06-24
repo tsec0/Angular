@@ -58,6 +58,10 @@ class Person extends Human{
     }
 }
 
+const personIvan = new Person("Ivan", 33);
+console.log(`${personIvan.age}`); // cannot access name because its private
+personIvan.speak();
+
 // Generics can work with string number separately
 function getIdentity<T>(id: T){
     // 
@@ -79,6 +83,59 @@ if(x === PaymentStatus.Pending){
     console.log(x);
 }
 
-const personIvan = new Person("Ivan", 33);
-console.log(`${personIvan.age}`); // cannot access name because its private
-personIvan.speak();
+// type is used for coollections API called
+type User1 = {
+    name: string;
+    age: number;
+    // x: string;
+};
+
+// interface declaration and usage
+interface User2 {
+    name: string;
+    age: number;
+}
+
+class UserTest implements User1 {
+    name: string;
+    age: number;
+}
+
+// enum is based on integers starting from 0
+enum PayStat {
+    Failed, // members
+    Successful,
+    Pending,
+}
+
+// array
+const PaymentStatus3 = ["Failed", "Successful", "Pending"];
+
+// this is an object => key, value pairs
+const PaymentStatus2 = {
+    Failed: "Failed",
+    Successfull: "Successful",
+    Pending: "Pending",
+}
+
+interface UserInterface {
+    name: string;
+}
+
+const users = [
+    {name: "Marto1", page: 1, offset: 5},
+    {name: "Marto2"},
+    {name: "Marto3"},
+    {name: "Marto4"},
+    {name: "Marto5"},
+    {name: "Marto6"},
+] as UserInterface[]; // cast
+
+const someUser : UserInterface = { name: "Marto123" }; // the type is UserInterface
+
+function test(name: string, users: UserInterface[]){
+    users.forEach( u => {
+        u.name = name;
+    })
+}
+
