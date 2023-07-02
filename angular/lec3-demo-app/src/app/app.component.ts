@@ -1,45 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { UserService } from './user.service';
 import { User } from './type/User';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  // providers: [UserService], // if the component does not exist -> it will not be used only for a single use
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   title = 'lec3-demo-app';
+  appUsers: User[] = []; // type user collection
 
-  users: User[] = [ 
-    {name: "Ivan", age: 12 },
-    {name: "Gragan", age: 13 },
-    {name: "Pesho", age: 14 },
-    {name: "Ivcho", age: 15 },
-  ];
-
-  constructor(){
-    setInterval(() => {
-        this.users.push({
-          name: 'DemoName',
-          age: 0,
-        });
-
-        console.log('User has been added');
-    }, 20000);
+  constructor(public userService: UserService){
+    this.appUsers = this.userService.users; // type user
   }
 
-  addUser(inputName: HTMLInputElement, inputAge: HTMLInputElement) {
-    const user = {
-      name: inputName.value,
-      age: Number(inputAge.value),
-    };
-
-    // this.users = [...this.users, user];
-    this.users.push(user);
-
-    inputAge.value = "";
-    inputName.value = "";
-
-    // validation to be added
+  setUser(inputName: HTMLInputElement, inputAge: HTMLInputElement){
+    // control and modifications
+    this.userService.addUser(inputName, inputAge);
+    this.appUsers = this.userService.users;
   }
 }
