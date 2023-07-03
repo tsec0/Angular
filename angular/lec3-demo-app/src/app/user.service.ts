@@ -1,15 +1,16 @@
-// import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from './type/JSONPlaceholderUser';
 
-// omitted because of mocha tests
-// @Injectable({
-//   providedIn: 'root', // where should the component be injected
-// })
+// omitted because of mocha tests ; but is needed for http client (streams) (observable)
+@Injectable({
+  providedIn: 'root', // where should the component be injected
+})
 export class UserService {
 
   users: User[] = [];
 
-  constructor(){
+  constructor(private http: HttpClient){
     // setInterval(() => {
     //     this.users.push({
     //       name: 'DemoName',
@@ -39,7 +40,11 @@ export class UserService {
   }
 
   getUsers() {
-    return fetch('https://jsonplaceholder.typicode.com/users')
-    .then((result) => result.json());
+    // PROMISE
+    // return fetch('https://jsonplaceholder.typicode.com/users')
+    // .then((result) => result.json());
+
+    // OBSERVABLE
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users')
   }
 }
