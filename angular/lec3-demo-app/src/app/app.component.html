@@ -13,6 +13,11 @@
     <button (click)="setUser(inputName, inputAge)">Add user</button>
   </div>
 
-</div>
+  <div *ngIf="isLoading">
+    <h3>Loading...</h3>
+  </div>
 
-<app-users-list [users]="userService.users" />
+  <div *ngIf="!isLoading">
+    <app-users-list [users]="appUsers" />
+  </div>
+</div>
