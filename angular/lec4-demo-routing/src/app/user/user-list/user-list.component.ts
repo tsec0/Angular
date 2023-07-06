@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+
+import { UserService } from '../user.service';
+
+import { User } from 'src/app/types/User';
+import { GlobalLoaderService } from 'src/app/core/global-loader/global-loader.service';
+
+@Component({
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
+})
+export class UserListComponent implements OnInit {
+  userList: User[] = [];
+
+  constructor(
+    private userService: UserService,
+    private globalLoaderService: GlobalLoaderService
+  ) {}
+
+  // observable
+  ngOnInit(): void {
+
+    this.globalLoaderService.showLoader();
+
+    // for testing
+    // setTimeout(() => {
+    this.userService.fetchUsers().subscribe({
+      next: (users) => {
+        this.userList = users;
+        this.globalLoaderService.hideLoader();
+      },
+      error: (error) => {
+        console.log(`Error: ${error}`),
+        this.globalLoaderService.hideLoader()
+      },
+      complete: () => { }
+    });
+    // }, 2000);
+  }
+}
