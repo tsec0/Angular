@@ -13,7 +13,7 @@ export class UserDetailComponent implements OnInit {
       private activeRoute: ActivatedRoute,
       private userService: UserService,
     ){
-    console.log('snapshot.data\n', this.activeRoute.snapshot.data);
+    console.log('snapshot.data\n', this.activeRoute.snapshot.data['user']); // returned user as an object
     this.activeRoute.params.subscribe((value) => console.log('params.subscribe\n', value));
   }
 
