@@ -20,7 +20,10 @@ export class UserListComponent implements OnInit {
 
   // observable
   ngOnInit(): void {
+    this.loadUsers();
+  }
 
+  loadUsers(): void {
     this.globalLoaderService.showLoader();
 
     // for testing
