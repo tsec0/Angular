@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -7,17 +7,19 @@ import { UserService } from '../user.service';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent {
   
   constructor( 
       private activeRoute: ActivatedRoute,
       private userService: UserService,
     ){
-    console.log('snapshot.data\n', this.activeRoute.snapshot.data['user']); // returned user as an object
-    this.activeRoute.params.subscribe((value) => console.log('params.subscribe\n', value));
+      // static way returned data
+      console.log('snapshot.data\n', this.activeRoute.snapshot.data['user']); // returned user as an object
+      // dynamic way returned data
+      this.activeRoute.params.subscribe((value) => console.log('params.subscribe\n', value));
   }
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
       
-  }
+  // }
 }

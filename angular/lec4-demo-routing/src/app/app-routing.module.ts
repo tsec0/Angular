@@ -8,9 +8,9 @@ export const routes: Routes = [
   { path: 'todo-list', component: TodoListComponent }
 ];
 
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule],
-// })
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
 
-// export class AppRoutingModule { }
+export class AppRoutingModule { }

@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserResolver } from './user-detail/user-detail.resolver';
+import { AuthGuard } from './user-detail/user-detail.guard';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UserResolver } from './user-detail/user-detail.resolver';
       {
         path: 'user/detail/:id',
         resolve: { user: UserResolver },
+        canActivate: [AuthGuard],
         component: UserDetailComponent,
       },
     ]),
